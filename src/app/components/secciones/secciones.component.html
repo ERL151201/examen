@@ -1,1 +1,22 @@
-<p>secciones works!</p>
+<h1>Secciones <small>a responder del examen</small></h1>
+<hr>
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let seccion of secciones">
+        <div class="card h-100">
+            <img [src]="seccion.img" class="card-img-top" [alt]="seccion.nombre">
+            <div class="card-body">
+                <h5 class="card-title">{{seccion.nombre}}</h5>
+                <p class="card-text">{{ seccion.des }}</p>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-outline-success btn-lg btn-block">
+                    Empezar esta seccion
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</div>

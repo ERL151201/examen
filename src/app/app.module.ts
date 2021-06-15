@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { APP_ROUTING } from "./app.routes";
 
 //Servicios
+import { SeccionesService } from './servicios/secciones.service';
 
 // Componentes 
 import { AppComponent } from './app.component';
@@ -26,7 +27,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     APP_ROUTING
   ],
-  providers: [],
+  providers: [
+    SeccionesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
