@@ -2,18 +2,21 @@
 <hr>
 
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col" *ngFor="let seccion of secciones">
+<div class="card-group">
+
+    <div class="card animated fadeIn fast" *ngFor="let seccion of secciones; let i = index">
         <div class="card h-100">
-            <img [src]="seccion.img" class="card-img-top" [alt]="seccion.nombre">
-            <div class="card-body">
+            <img [src]="seccion.img" class="card-img-top" style="width:10rem" [alt]="seccion.nombre">
+            <div class="card-body" style="width:15rem">
                 <h5 class="card-title">{{seccion.nombre}}</h5>
                 <p class="card-text">{{ seccion.des }}</p>
             </div>
             <div class="card-footer">
-                <button type="button" class="btn btn-outline-success btn-lg btn-block">
+                <button (click)="verSeccion(i)" type="button" class="btn btn-outline-success btn-lg btn-block">
                     Empezar esta seccion
                 </button>
+
+                <!-- <a [routerLink]="['/seccion', i]" class="btn btn-outline-primary">Empezar esta seccion...</a> -->
 
             </div>
         </div>
