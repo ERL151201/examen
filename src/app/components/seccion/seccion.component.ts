@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+import { SeccionesService } from "../../servicios/secciones.service";
 @Component({
   selector: 'app-seccion',
   templateUrl: './seccion.component.html',
   
 })
-export class SeccionComponent implements OnInit {
+export class SeccionComponent {
 
-  constructor() { }
+  seccion:any={};
 
-  ngOnInit(): void {
-  }
+  constructor( private activatedRoute: ActivatedRoute,
+                private _seccionesService: SeccionesService            
+    ) {
+
+    
+    this.activatedRoute.params.subscribe(params =>{
+      this.seccion = this._seccionesService.getSeccion(params['id']);
+    })
+
+   }
+  
+ 
 
 }

@@ -31,8 +31,29 @@ export class SeccionesService {
         
     }
 
-    getSecciones(){
+    getSecciones():Seccion[]{
         return this.secciones;
+    }
+
+    getSeccion(idx:number){
+        return this.secciones[idx];
+    }
+
+    buscarSecciones(termino:string){
+        
+        let seccionesArr:Seccion[]=[];
+        termino = termino.toLocaleLowerCase();
+
+        for(let i=0; i < this.secciones.length; i++){
+                let seccion = this.secciones[i];
+            let nombre = seccion.nombre.toLocaleLowerCase();
+            if (nombre.indexOf(termino)  >= 0  ) {
+                seccion.idx = i;
+                seccionesArr.push(seccion)
+            }
+        }
+        return seccionesArr;
+
     }
     
 }
@@ -41,4 +62,5 @@ export interface Seccion{
     nombre:string;
     des:string;
     img:string;
+    idx?: number;
 }

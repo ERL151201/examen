@@ -1,1 +1,29 @@
-<p>seccion works!</p>
+<h1 class="animated fadeIn">{{seccion.nombre | uppercase}}</h1>
+
+<hr>
+
+<div class="row animated fadeIn fast">
+
+    <div class="col-md-4">
+
+        <img [src]="seccion.img" class="img-fluid" [alt]="seccion.nombre">
+        <br><br>
+
+        <a [routerLink]="['/secciones']" class="btn btn-outline-danger btn-lg btn-block">Regresar</a>
+    </div>
+
+    <div class="col-md-8">
+        <h3>{{seccion.nombre}}</h3>
+        <hr>
+
+        <p>
+            {{seccion.des}}
+        </p>
+
+        <a [routerLink]="['/examen']" class="btn btn-outline-success btn-lg btn-block">Empezar</a>
+
+
+
+
+    </div>
+</div>

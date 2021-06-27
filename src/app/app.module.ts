@@ -14,6 +14,8 @@ import { AboutComponent } from './components/about/about.component';
 import { SeccionesComponent } from './components/secciones/secciones.component';
 import { FormsModule } from '@angular/forms';
 import { SeccionComponent } from './components/seccion/seccion.component';
+import { BuscadorComponent } from './components/buscador/buscador.component';
+import { SeccionTarjetaComponent } from './components/seccion-tarjeta/seccion-tarjeta.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { SeccionComponent } from './components/seccion/seccion.component';
     HomeComponent,
     AboutComponent,
     SeccionesComponent,
-    SeccionComponent
+    SeccionComponent,
+    BuscadorComponent,
+    SeccionTarjetaComponent
   ],
   imports: [
     BrowserModule,

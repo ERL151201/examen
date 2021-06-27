@@ -1,6 +1,13 @@
-<h1>Secciones <small>a responder del examen</small></h1>
+<h1>Buscando: <small>{{termino}}</small></h1>
 <hr>
 
+<div class="row animated fadeIn fast" *ngIf="secciones.length == 0">
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            No existen resultados con el termino: {{termino}}
+        </div>
+    </div>
+</div>
 
 <div class="card-group">
 
