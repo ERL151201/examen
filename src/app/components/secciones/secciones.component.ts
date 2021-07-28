@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SeccionesService, Seccion } from '../../servicios/secciones.service';
+import { SeccionesService, Seccion } from '../../services/secciones.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,7 +28,6 @@ export class SeccionesComponent implements OnInit {
 
   verSeccion(idx:number){
       this.router.navigate(['/seccion',idx]);
-    
   }
 
 }

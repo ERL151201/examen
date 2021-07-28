@@ -7,22 +7,26 @@ export class SeccionesService {
         {
           nombre: "Pensamiento Matematico",
           des: "Resolveras distintos problemas matematicos en base a tus conocimientos",
-          img: "assets/img/mat.png"
+          img: "assets/img/mat.png",
+          idx: 0,
         },
         {
             nombre: "Pensamiento Analítico",
             des: "Resolveras distintos problemas analiticos en base a tus conocimientos",
-            img: "assets/img/analitico.png"
+            img: "assets/img/analitico.png",
+            idx: 1,
         },
         {
             nombre: "Estructura del lenguaje",
             des: "Escribiras la correcta escritura de las palabras, sus funciones y concordancia",
-            img: "assets/img/lengua.jpg"
+            img: "assets/img/lengua.jpg",
+            idx: 2
         },
         {
             nombre: "Comprensión lectora",
             des: "Identificaras las ideas relevantes de un texto",
-            img: "assets/img/lect.jpg"
+            img: "assets/img/lect.jpg",
+            idx: 3
         },
     ];
 

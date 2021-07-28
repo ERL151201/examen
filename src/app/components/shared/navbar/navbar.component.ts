@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from "@angular/router";
 
 @Component({
@@ -8,14 +9,19 @@ import { Router } from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router:Router) { }
-
+  
+  constructor(private router:Router, public afAuth: AngularFireAuth) { }
+  
   ngOnInit(): void {
+    
   }
 
   buscarSeccion(termino:string){
     //console.log(termino);
     this.router.navigate(['/buscar', termino]);
   }
+
+  
+
 
 }
