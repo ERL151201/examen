@@ -10,7 +10,7 @@ import { Respuesta } from '../../models/respuesta.interface';
 @Component({
   selector: 'app-seccion',
   templateUrl: './seccion.component.html',
-  
+  styleUrls: ['./seccion.component.css']
 })
 export class SeccionComponent {
 
@@ -18,7 +18,7 @@ export class SeccionComponent {
   preguntas:any=[];
   p:number=1;
   exam:string = '';
-  user:any = 'Luis'
+  user:any = 'Juan Perez Delgado'
   @ViewChild('id_pregunta') id_pregunta: any;
 
   constructor( private activatedRoute: ActivatedRoute,

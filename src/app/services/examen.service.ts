@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { merge, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Pregunta } from '../models/pregunta.interface';
 import { Respuesta } from '../models/respuesta.interface';
+import { Calificacion } from '../models/calificacion.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -71,7 +72,6 @@ export class ExamenService {
       .pipe(map(changes => {
         return changes.map(action => {
           const data = action.payload.doc.data() as Pregunta;
-
           return data;
         });
       }));
@@ -92,9 +92,7 @@ export class ExamenService {
         const data = doc.data()
         respuestasCorrec.push(data.correcta)
         this.correctasExam = respuestasCorrec;
-      },
-      console.log(this.correctasExam)
-      )
+      })
     })
   }
 
@@ -108,9 +106,7 @@ export class ExamenService {
         const data = doc.data();
         respuestasUser.push(data.respuesta) 
         this.respUser = respuestasUser;
-      },
-      console.log(this.respUser)
-      )
+      })
     });
     let iguales=0;
     let total:number = this.correctasExam.length;
@@ -122,13 +118,78 @@ export class ExamenService {
         }
       }
     }
-    //console.log(total);
     let incorrectas = total-iguales;
     calificacion = iguales/total*10
-    this.afs.collection('calificaciones').doc(exam).collection(user).doc('datos').set({
-      respuestasincorrectas: incorrectas,
-      respuestasCorrectas: iguales,
-      calificacionSeccion: calificacion
+    switch (exam) {
+      case "pensamientoMate":
+        let califSeccion1 = {
+            seccionExamen: exam,
+            respuestasIncorrectas: incorrectas,
+            respuestasCorrectas: iguales,
+            calificacionSeccion: calificacion
+        }
+        this.afs.collection('calificaciones').doc(user).set({
+          alumno: user,
+          seccion1: califSeccion1
+        }, { merge: true })
+        break;
+      case "pensamientoAnalitico":
+        let califSeccion2 = {
+          seccionExamen: exam,
+          respuestasIncorrectas: incorrectas,
+          respuestasCorrectas: iguales,
+          calificacionSeccion: calificacion
+        }
+        this.afs.collection('calificaciones').doc(user).set({
+          alumno: user,
+          seccion2: califSeccion2
+        }, { merge: true })
+        break;
+      case "lenguaje":
+        let califSeccion3 = {
+          seccionExamen: exam,
+          respuestasIncorrectas: incorrectas,
+          respuestasCorrectas: iguales,
+          calificacionSeccion: calificacion
+        }
+        this.afs.collection('calificaciones').doc(user).set({
+          alumno: user,
+          seccion3: califSeccion3
+        }, { merge: true })
+        break;
+      case "comprensionLectura":
+        let califSeccion4 = {
+          seccionExamen: exam,
+          respuestasIncorrectas: incorrectas,
+          respuestasCorrectas: iguales,
+          calificacionSeccion: calificacion
+        }
+        this.afs.collection('calificaciones').doc(user).set({
+          alumno: user,
+          seccion4: califSeccion4
+        }, { merge: true })
+        break;
+      default:
+        console.log('Algo salio mal :(');
+        break;
+    }
+    this.calificacionFinal(user);
+  }
+
+  calificacionFinal(user: any){
+    this.afs.collection('calificaciones').doc(user).get()
+    .subscribe(doc => {
+      let datos = doc.data() as Calificacion
+      let calif1 = datos.seccion1.calificacionSeccion;
+      let calif2 = datos.seccion2.calificacionSeccion;
+      let calif3 = datos.seccion3.calificacionSeccion;
+      let calif4 = datos.seccion4.calificacionSeccion;
+      
+      let calificacionFinal = (calif1+calif2+calif3+calif4)/4
+      console.log(calificacionFinal);
+      this.afs.collection('calificaciones').doc(user).set({
+        calificacionFinal: calificacionFinal
+      }, { merge: true })
     })
   }
 }

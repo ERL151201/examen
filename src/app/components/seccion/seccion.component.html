@@ -9,37 +9,41 @@
             <div class="id">
                 <input type="radio" #id_pregunta name="id_pregunta" value={{pregunta.id_pregunta}} hidden checked>
             </div>
-
-            <h5>Pregunta {{pregunta.id_pregunta}}</h5>
-            <p>{{pregunta.pregunta_txt}}</p>
-            <img src={{pregunta.pregunta_url}} *ngIf="pregunta.pregunta_url">
-            <br>
-            <div class="form-group">
-                <label>
-                    <input type="radio" value={{pregunta.respuesta1}} name="correcta" formControlName="correcta">  {{pregunta.respuesta1}}
-                </label>
-                <br>
-                <label>
-                    <input type="radio" value={{pregunta.respuesta2}} name="correcta" formControlName="correcta">  {{pregunta.respuesta2}}
-                </label>
-                <br>
-                <label *ngIf="pregunta.respuesta3">
-                    <input type="radio" value={{pregunta.respuesta3}} name="correcta" formControlName="correcta">  {{pregunta.respuesta3}}
-                </label>
-                <br>
-                <label *ngIf="pregunta.respuesta4">
-                    <input type="radio" value={{pregunta.respuesta4}} name="correcta" formControlName="correcta">  {{pregunta.respuesta4}}
-                </label>
+            <div class="d-flex justify-content-between">
+                <div class="pregunta">
+                    <h5>Pregunta {{pregunta.id_pregunta}}</h5>
+                    <p>{{pregunta.pregunta_txt}}</p>
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" value={{pregunta.respuesta1}} name="correcta" formControlName="correcta">  {{pregunta.respuesta1}}
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" value={{pregunta.respuesta2}} name="correcta" formControlName="correcta">  {{pregunta.respuesta2}}
+                        </label>
+                        <br>
+                        <label *ngIf="pregunta.respuesta3">
+                            <input type="radio" value={{pregunta.respuesta3}} name="correcta" formControlName="correcta">  {{pregunta.respuesta3}}
+                        </label>
+                        <br>
+                        <label *ngIf="pregunta.respuesta4">
+                            <input type="radio" value={{pregunta.respuesta4}} name="correcta" formControlName="correcta">  {{pregunta.respuesta4}}
+                        </label>
+                    </div>
+                </div>
+                <img src={{pregunta.pregunta_url}} *ngIf="pregunta.pregunta_url">
             </div>
+
+
+
+
             <hr>
         </div>
         <div class="d-grid gap-2 col-6 mx-auto">
             <button class="btn btn-success me-md-2" type="submit">Guardar Respuesta</button>
         </div>
-        <br>
-        <br>
     </form>
 </div>
-<footer>
-    <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"> </pagination-controls>
-</footer>
+<hr>
+<pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"> </pagination-controls>
+<hr>

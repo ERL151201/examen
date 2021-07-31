@@ -27,6 +27,7 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
 import { SeccionTarjetaComponent } from './components/seccion-tarjeta/seccion-tarjeta.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BrowserModule,
     APP_ROUTING,
     CommonModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
@@ -49,7 +51,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    HttpClientModule
     
   ],
   providers: [

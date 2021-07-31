@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SeccionesService, Seccion } from '../../services/secciones.service';
 import { Router } from '@angular/router';
+import { ExamenService } from '../../services/examen.service';
 
 @Component({
   selector: 'app-secciones',
@@ -11,19 +12,11 @@ export class SeccionesComponent implements OnInit {
 
   secciones:Seccion[] = [];
   constructor(private _seccionesService: SeccionesService,
-              private router:Router          
-    ) {
-
-  
-  
-   }
+              private router:Router,      
+    ) {  }
 
   ngOnInit() {
-    
     this.secciones = this._seccionesService.getSecciones();
-  
-    
-    
   }
 
   verSeccion(idx:number){
