@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from "@angular/router";
+import { AuthService } from '../../../services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -9,19 +10,17 @@ import { Router } from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
 
-  
-  constructor(private router:Router, public afAuth: AngularFireAuth) { }
-  
-  ngOnInit(): void {
-    
-  }
+  constructor(private router:Router, public auth: AuthService) { }
+  ngOnInit(): void {}
 
   buscarSeccion(termino:string){
     //console.log(termino);
     this.router.navigate(['/buscar', termino]);
   }
 
-  
-
+  salir(){
+    this.auth.logout();
+    this.router.navigateByUrl('/login');
+  }
 
 }

@@ -173,10 +173,9 @@ export class ExamenService {
         console.log('Algo salio mal :(');
         break;
     }
-    this.calificacionFinal(user);
   }
 
-  calificacionFinal(user: any){
+  calificacionFinal(user: string, id_user:string){
     this.afs.collection('calificaciones').doc(user).get()
     .subscribe(doc => {
       let datos = doc.data() as Calificacion
@@ -188,7 +187,8 @@ export class ExamenService {
       let calificacionFinal = (calif1+calif2+calif3+calif4)/4
       console.log(calificacionFinal);
       this.afs.collection('calificaciones').doc(user).set({
-        calificacionFinal: calificacionFinal
+        calificacionFinal: calificacionFinal,
+        id_usuario: id_user
       }, { merge: true })
     })
   }

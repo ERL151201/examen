@@ -26,6 +26,8 @@ import { SeccionComponent } from './components/seccion/seccion.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { SeccionTarjetaComponent } from './components/seccion-tarjeta/seccion-tarjeta.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SeccionComponent,
     BuscadorComponent,
     SeccionTarjetaComponent,
+    LoginComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { ExamenService } from 'src/app/services/examen.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Respuesta } from '../../models/respuesta.interface';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-seccion',
@@ -18,18 +19,19 @@ export class SeccionComponent {
   preguntas:any=[];
   p:number=1;
   exam:string = '';
-  user:any = 'Juan Perez Delgado'
+  user:string = ''
   @ViewChild('id_pregunta') id_pregunta: any;
 
   constructor( private activatedRoute: ActivatedRoute,
                 private _seccionesService: SeccionesService,
                 public eS: ExamenService,
-                private router:Router       
+                private router:Router,
+                public auth: AuthService     
     ) {
       this.enviarRespuestas = this.createFormGroup();
     }
   ngOnInit(){
-
+    this.user = this.auth.getUsuario().usuario;
     var id = this.activatedRoute.snapshot.params.id;
     switch (id) {
       case "0":
@@ -64,12 +66,9 @@ export class SeccionComponent {
     this.activatedRoute.params.subscribe(params =>{
       this.seccion = this._seccionesService.getSeccion(params['id']);
     });
-    //this.eS.getCorrectas(this.exam);
-    //this.eS.getCorrectas(this.exam);
   } 
 
   createFormGroup(){
-    
     return new FormGroup({
       correcta: new FormControl(''),
     });
@@ -80,7 +79,6 @@ export class SeccionComponent {
     Swal.showLoading();
     let id = this.id_pregunta.nativeElement.defaultValue;
     data.id_pregunta = id;
-    //console.log(data, this.exam, this.user);
     this.eS.guardarRespuestas(id, data, this.exam, this.user);
     Swal.fire({
       position: 'center',
