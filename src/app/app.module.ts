@@ -28,6 +28,7 @@ import { SeccionTarjetaComponent } from './components/seccion-tarjeta/seccion-ta
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -46,10 +47,10 @@ import { RegistroComponent } from './components/registro/registro.component';
   imports: [
     BrowserModule,
     APP_ROUTING,
-    CommonModule,
-    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    CommonModule,
+    HttpClientModule,
     NgxPaginationModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
@@ -60,6 +61,7 @@ import { RegistroComponent } from './components/registro/registro.component';
   providers: [
     SeccionesService,
     ExamenService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

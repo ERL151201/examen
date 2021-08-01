@@ -4,6 +4,9 @@ import { UsuarioModel } from '../models/usuario.model';
 
 import {map} from 'rxjs/operators';
 import { Resp } from '../models/resp.interface';
+import { AngularFireAuth } from '@angular/fire/auth';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +24,19 @@ export class AuthService {
   //Login
   //https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, public afAuth: AngularFireAuth, public router: Router) { 
     this.leerToken();
   }
 
   logout(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Saliendo...',
+      text: 'Cerrando Sesión',
+      showConfirmButton: false
+    });
     localStorage.removeItem('token');
+    window.location.reload();
   }
 
   login (usuario: UsuarioModel){
@@ -89,25 +99,25 @@ export class AuthService {
 
   leerToken(){
     if (localStorage.getItem('token')) {
-      //this.userToken = localStorage.getItem('token');
+      this.userToken = JSON.parse(localStorage.getItem('email') || '{}');
     }else{
       this.userToken = '';
     }
     return this.userToken;
   }
 
-    estaAutenticado() : boolean{        
-      if (this.userToken.length < 2) {
-        return false;
-      }
-      const expira = Number (localStorage.getItem('expira'));
-      const expiraDate = new Date();
-      expiraDate.setTime(expira);
-       if (expiraDate > new Date() ) {
-         return true;
-       }else{
-         return false;
-       }
+  estaAutenticado() : boolean{ 
+    if (this.userToken.length < 2) {
+      return false;
+    }
+    const expira = Number (localStorage.getItem('expira'));
+    const expiraDate = new Date();
+    expiraDate.setTime(expira);
+    if (expiraDate > new Date() ) {
+      return true;
+    }else{
+      return false;
+    }
   }
 
   
