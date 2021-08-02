@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { SeccionesService } from "../../servicios/secciones.service";
+import { SeccionesService } from "../../services/secciones.service";
 import { Router } from '@angular/router';
 
 
@@ -25,8 +25,6 @@ export class BuscadorComponent implements OnInit {
        this.termino = (params['termino']);
       this.secciones = this._seccionesService.buscarSecciones(params['termino']);
       console.log(this.secciones);
-      
-      
     });
 
     

@@ -1,12 +1,12 @@
-<h1>Secciones <small>a responder del examen</small></h1>
+<div class="d-flex">
+    <h1>Secciones <small>a responder del examen</small></h1>
+    <button type="button" class="btn btn-danger ml-auto" (click)="terminar()">Terminar Examen</button>
+</div>
 <hr>
-
-
 <div class="card-group">
-
-    <div class="card animated fadeIn fast" *ngFor="let seccion of secciones; let i = index">
-        <div class="card h-100">
-            <img [src]="seccion.img" class="img-logo" [alt]="seccion.nombre">
+    <div class=" animated fadeIn fast" *ngFor="let seccion of secciones; let i = index">
+        <div class="card h-100 m-2 text-center">
+            <img [src]="seccion.img" class="img-logo mx-auto" [alt]="seccion.nombre">
             <div class="card-body" style="width:15rem">
                 <h5 class="card-title">{{seccion.nombre}}</h5>
                 <p class="card-text">{{ seccion.des }}</p>

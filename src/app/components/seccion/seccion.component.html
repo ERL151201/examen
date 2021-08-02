@@ -1,29 +1,49 @@
-<h1 class="animated fadeIn">{{seccion.nombre | uppercase}}</h1>
-
-<hr>
-
-<div class="row animated fadeIn fast">
-
-    <div class="col-md-4">
-
-        <img [src]="seccion.img" class="img-fluid" [alt]="seccion.nombre">
-        <br><br>
-
-        <a [routerLink]="['/secciones']" class="btn btn-outline-danger btn-lg btn-block">Regresar</a>
-    </div>
-
-    <div class="col-md-8">
-        <h3>{{seccion.nombre}}</h3>
-        <hr>
-
-        <p>
-            {{seccion.des}}
-        </p>
-
-        <a [routerLink]="['/examen']" class="btn btn-outline-success btn-lg btn-block">Empezar</a>
-
-
-
-
-    </div>
+<div class="d-flex">
+    <h1 class="animated fadeIn">{{seccion.nombre | uppercase}}</h1>
+    <button type="button" class="btn btn-warning ml-auto" (click)="calif()">Terminar Sección</button>
 </div>
+<hr>
+<div class="row animated fadeIn fast">
+    <form [formGroup]="enviarRespuestas" (ngSubmit)="enviarPregunta(enviarRespuestas.value)">
+        <div class="form-group" *ngFor="let pregunta of preguntas  | paginate: { itemsPerPage: 1, currentPage: p }">
+            <div class="id">
+                <input type="radio" #id_pregunta name="id_pregunta" value={{pregunta.id_pregunta}} hidden checked>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="pregunta">
+                    <h5>Pregunta {{pregunta.id_pregunta}}</h5>
+                    <p>{{pregunta.pregunta_txt}}</p>
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" value={{pregunta.respuesta1}} name="correcta" formControlName="correcta">  {{pregunta.respuesta1}}
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" value={{pregunta.respuesta2}} name="correcta" formControlName="correcta">  {{pregunta.respuesta2}}
+                        </label>
+                        <br>
+                        <label *ngIf="pregunta.respuesta3">
+                            <input type="radio" value={{pregunta.respuesta3}} name="correcta" formControlName="correcta">  {{pregunta.respuesta3}}
+                        </label>
+                        <br>
+                        <label *ngIf="pregunta.respuesta4">
+                            <input type="radio" value={{pregunta.respuesta4}} name="correcta" formControlName="correcta">  {{pregunta.respuesta4}}
+                        </label>
+                    </div>
+                </div>
+                <img src={{pregunta.pregunta_url}} *ngIf="pregunta.pregunta_url">
+            </div>
+
+
+
+
+            <hr>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-success me-md-2" type="submit">Guardar Respuesta</button>
+        </div>
+    </form>
+</div>
+<hr>
+<pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"> </pagination-controls>
+<hr>
