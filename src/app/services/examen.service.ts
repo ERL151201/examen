@@ -99,7 +99,7 @@ export class ExamenService {
   calificaExamen(user: any, exam:any){
     let respuestasUser:any = []    
     this.getCorrectas(exam);
-    console.log(this.correctasExam);
+    //console.log(this.correctasExam);
     this.afs.collection('respuestas').doc(exam).collection(user).get()
     .subscribe(doc=>{
       doc.docs.map(doc=>{

@@ -101,7 +101,7 @@ export class AuthService {
 
   leerToken(){
     if (localStorage.getItem('token')) {
-      this.userToken = JSON.parse(localStorage.getItem('email') || '{}');
+      //this.userToken = JSON.parse(localStorage.getItem('email') || '{}');
     }else{
       this.userToken = '';
     }
