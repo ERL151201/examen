@@ -1,0 +1,92 @@
+<div class="card col-md-9 mx-auto animated fadeIn">
+    <header class="d-flex">
+        <h1>Captura de Preguntas</h1>
+        <button type="button" class="btn btn-outline-primary ml-auto btn-lg btn-sm" (click)="resultados()">Ver resultados</button>
+    </header>
+    <hr>
+    <form [formGroup]="crearPregunta" (ngSubmit)="enviarPregunta(crearPregunta.value)">
+        <div class="form-group">
+            <label for="id_examen">Selecciona el Módulo de examen</label>
+            <select class="form-control" id="id_examen" formControlName="id_examen">
+                    <option value="">---</option>
+                    <option value="1">Pensamiento Matemático</option>
+                    <option value="2">Pensamiento Analítico</option>
+                    <option value="3">Estructura del Lenguaje</option>
+                    <option value="4">Comprensión Lectora</option>
+                </select>
+        </div>
+        <div class="alert-danger" *ngIf="id_examen?.invalid && (id_examen?.dirty || id_examen?.touched)">
+            <div class="container-error-message" *ngIf="id_examen?.errors?.required">
+                Este campo es requerido
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="id_pregunta">Id Pregunta</label>
+            <input type="number" class="form-control" id="id_pregunta" formControlName="id_pregunta">
+        </div>
+        <div class="alert-danger" *ngIf="id_pregunta?.invalid && (id_pregunta?.dirty || id_pregunta?.touched)">
+            <div class="container-error-message">
+                Este campo es requerido
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pregunta_txt">Pregunta</label>
+            <textarea class="form-control" id="pregunta_txt" rows="4" formControlName="pregunta_txt"></textarea>
+        </div>
+        <div class="alert-danger" *ngIf="pregunta_txt?.invalid && (pregunta_txt?.dirty || pregunta_txt?.touched)">
+            <div class="container-error-message" *ngIf="pregunta_txt?.errors?.required">
+                Este campo es requerido
+            </div>
+        </div>
+        <hr>
+        <div class="progress-panel">
+            <div class="custom-file">
+                <label class="form-label">Agregar imagen (opcional)</label>
+                <input type="file" class="form-control" (change)="subirImage($event)" formControlName="pregunta_url" />
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <label for="res1">Respuesta 1</label>
+            <input type="text" id="res1" class="form-control" formControlName="respuesta1">
+        </div>
+        <div class="alert-danger" *ngIf="respuesta1?.invalid && (respuesta1?.dirty || respuesta1?.touched)">
+            <div class="container-error-message">
+                Este campo es requerido
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="res2">Respuesta 2</label>
+            <input type="text" id="res2" class="form-control" formControlName="respuesta2">
+        </div>
+        <div class="alert-danger" *ngIf="respuesta2?.invalid && (respuesta2?.dirty || respuesta2?.touched)">
+            <div class="container-error-message">
+                Este campo es requerido
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="res3">Respuesta 3 (opcional)</label>
+            <input type="text" id="res3" class="form-control" formControlName="respuesta3">
+        </div>
+
+        <div class="form-group">
+            <label for="res4">Respuesta 4 (opcional)</label>
+            <input type="text" id="res4" class="form-control" formControlName="respuesta4">
+        </div>
+
+        <hr>
+        <div class="form-group">
+            <label for="correcta">Respuesta Correcta</label>
+            <input type="text" id="correcta" class="form-control" formControlName="correcta">
+        </div>
+        <div class="alert-danger" *ngIf="correcta?.invalid && (correcta?.dirty || correcta?.touched)">
+            <div class="container-error-message">
+                Este campo es requerido
+            </div>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-success me-md-2" type="submit" [disabled]="!crearPregunta.valid">Registrar Pregunta</button>
+            <button class="btn btn-warning" type="button" (click)="limpiar()">Limpiar</button>
+        </div>
+    </form>
+</div>

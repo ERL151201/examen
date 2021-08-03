@@ -18,6 +18,7 @@ export class AuthService {
     userToken:string = '';
     usuarioActivo:string = '';
     idUsuario:string = '';
+    email:string = '';
     //Crear usuario nuevo
     //https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
 
@@ -54,6 +55,7 @@ export class AuthService {
         this.guardarToken(data.idToken);
         this.usuarioActivo = data.displayName;
         this.idUsuario = data.localId;
+        this.email = data.email;
         this.getUsuario();
         return data;
       })
@@ -118,6 +120,15 @@ export class AuthService {
     }else{
       return false;
     }
+  }
+
+  esAdmin() : boolean{
+    const email = this.email
+    let emailAdmin = 'admin@gmail.com'
+    if(email == emailAdmin){
+      return true;
+    }
+    return false;
   }
 
   
