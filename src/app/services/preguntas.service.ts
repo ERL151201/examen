@@ -77,6 +77,7 @@ export class PreguntasService {
             descCorrec = '';
             break;
     }
+
     try {
       //this.preguntas.add(nuevaPregunta);
       this.preguntas.doc(descExam).collection('preguntas').doc(`pregunta:${newPregunta.id_pregunta}`).set(nuevaPregunta);

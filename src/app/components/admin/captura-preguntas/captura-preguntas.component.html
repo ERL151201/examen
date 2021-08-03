@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
             <label for="pregunta_txt">Pregunta</label>
-            <textarea class="form-control" id="pregunta_txt" rows="4" formControlName="pregunta_txt"></textarea>
+            <textarea class="form-control" id="pregunta_txt" rows="1" formControlName="pregunta_txt"></textarea>
         </div>
         <div class="alert-danger" *ngIf="pregunta_txt?.invalid && (pregunta_txt?.dirty || pregunta_txt?.touched)">
             <div class="container-error-message" *ngIf="pregunta_txt?.errors?.required">

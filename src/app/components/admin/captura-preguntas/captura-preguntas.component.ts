@@ -37,6 +37,7 @@ export class CapturaPreguntasComponent implements OnInit {
   }
     
   enviarPregunta(data: Pregunta){
+    Swal.showLoading();
     this.auS.preAddAndUpdatePregunta(data, this.image);  
   }
 

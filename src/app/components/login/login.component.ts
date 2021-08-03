@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
   Swal.showLoading();
     this.auth.login(this.usuario)
     .subscribe( resp =>{
-      console.log(resp);
+      //console.log(resp);
       Swal.close();
     /*if (this.recordarme) {
       localStorage.setItem('email', this.usuario.email);

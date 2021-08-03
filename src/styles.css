@@ -1,5 +1,7 @@
 body {
     padding-bottom: 50px;
+    background-color: #b4bcbc;
+    background-image: url("assets/img/fondo_gris.png");
 }
 
 .main-container {

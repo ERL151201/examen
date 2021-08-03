@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class ResultadosComponent implements OnInit {
 
   resultados:any = []; 
+  p:number = 1;
 
   constructor(public preS: PreguntasService, private router: Router) { }
 

@@ -16,7 +16,7 @@
                     <td>Calificacion Final</td>
                 </tr>
             </thead>
-            <tbody *ngFor="let resultado of resultados">
+            <tbody *ngFor="let resultado of resultados | paginate: { itemsPerPage: 10, currentPage: p }">
                 <tr>
                     <td>{{resultado.alumno}}</td>
                     <td *ngIf="resultado.seccion1; else noAplica">{{resultado.seccion1.calificacionSeccion}}</td>
@@ -40,3 +40,6 @@
         </ng-template>
     </div>
 </div>
+<hr>
+<pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"> </pagination-controls>
+<hr>
