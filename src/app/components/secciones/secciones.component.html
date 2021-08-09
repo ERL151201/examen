@@ -3,7 +3,7 @@
     <button type="button" class="btn btn-danger ml-auto" (click)="terminar()">Terminar Examen</button>
 </div>
 <hr>
-<div class="card-group">
+<div class="card-group animated fadeIn">
     <div class=" animated fadeIn fast" *ngFor="let seccion of secciones; let i = index">
         <div class="card h-100 m-2 text-center">
             <img [src]="seccion.img" class="img-logo mx-auto" [alt]="seccion.nombre">

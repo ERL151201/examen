@@ -1,0 +1,15 @@
+.card {
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 10px 10px 5px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.alert-danger {
+    height: 30px;
+    border-radius: 5px;
+}

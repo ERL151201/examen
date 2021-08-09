@@ -7,6 +7,7 @@ import { Resp } from '../models/resp.interface';
 import { AngularFireAuth } from '@angular/fire/auth';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Administrador } from '../models/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,9 @@ export class AuthService {
     userToken:string = '';
     usuarioActivo:string = '';
     idUsuario:string = '';
+    email:string = '';
+    password:string = '';
+    admin: Administrador = new Administrador;
     //Crear usuario nuevo
     //https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
 
@@ -50,10 +54,12 @@ export class AuthService {
     ).pipe(
       map((resp) =>{
         const data = resp as Resp;
-        console.log('login: ', data);
+        //console.log('login: ', data);
         this.guardarToken(data.idToken);
         this.usuarioActivo = data.displayName;
         this.idUsuario = data.localId;
+        this.email = data.email;
+        this.password = authData.password;
         this.getUsuario();
         return data;
       })
@@ -99,7 +105,7 @@ export class AuthService {
 
   leerToken(){
     if (localStorage.getItem('token')) {
-      this.userToken = JSON.parse(localStorage.getItem('email') || '{}');
+      //this.userToken = JSON.parse(localStorage.getItem('email') || '{}');
     }else{
       this.userToken = '';
     }
@@ -118,6 +124,18 @@ export class AuthService {
     }else{
       return false;
     }
+  }
+
+  esAdmin() : boolean{
+    const passwordAdmin = this.admin.password;
+    //console.log(passwordAdmin);
+    
+    //const email = this.email
+    //let emailAdmin = 'admin@gmail.com'
+    if(passwordAdmin == this.password){
+      return true;
+    }
+    return false;
   }
 
   

@@ -1,0 +1,45 @@
+<div class="card col-13 mx-auto mt-5 d-grid gap-2 animated fadeIn">
+    <div class="d-flex m-1 p-2">
+        <h1 class="m-2"><strong>Resultados del examen</strong></h1>
+        <button type="button" class="btn btn-outline-primary ml-auto btn-lg btn-sm" (click)="registropreg()">Registro de Preguntas</button>
+    </div>
+
+    <div class="table-responsive p-3 text-center">
+        <table class="table" align="center">
+            <thead class="table-dark">
+                <tr>
+                    <td>Alumno</td>
+                    <td>Calificacion Sección 1</td>
+                    <td>Calificacion Sección 2</td>
+                    <td>Calificacion Sección 3</td>
+                    <td>Calificacion Sección 4</td>
+                    <td>Calificacion Final</td>
+                </tr>
+            </thead>
+            <tbody *ngFor="let resultado of resultados | paginate: { itemsPerPage: 10, currentPage: p }">
+                <tr>
+                    <td>{{resultado.alumno}}</td>
+                    <td *ngIf="resultado.seccion1; else noAplica">{{resultado.seccion1.calificacionSeccion}}</td>
+                    <td *ngIf="resultado.seccion2; else noAplica">{{resultado.seccion2.calificacionSeccion}}</td>
+                    <td *ngIf="resultado.seccion3; else noAplica">{{resultado.seccion3.calificacionSeccion}}</td>
+                    <td *ngIf="resultado.seccion4; else noAplica">{{resultado.seccion4.calificacionSeccion}}</td>
+
+                    <td *ngIf="!resultado.calificacionFinal">N/A</td>
+
+                    <td class="table-success" *ngIf="resultado.calificacionFinal >= 8">
+                        {{resultado.calificacionFinal}}
+                    </td>
+                    <td class="table-danger" *ngIf="resultado.calificacionFinal <= 7.9">
+                        {{resultado.calificacionFinal}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ng-template #noAplica>
+            <td>N/A</td>
+        </ng-template>
+    </div>
+</div>
+<hr>
+<pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"> </pagination-controls>
+<hr>

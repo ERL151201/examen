@@ -29,6 +29,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { AuthService } from './services/auth.service';
+import { CapturaPreguntasComponent } from './components/admin/captura-preguntas/captura-preguntas.component';
+import { PreguntasService } from './services/preguntas.service';
+import { ResultadosComponent } from './components/admin/resultados/resultados.component';
 
 
 @NgModule({
@@ -43,12 +46,14 @@ import { AuthService } from './services/auth.service';
     SeccionTarjetaComponent,
     LoginComponent,
     RegistroComponent,
+    CapturaPreguntasComponent,
+    ResultadosComponent,
   ],
   imports: [
     BrowserModule,
-    APP_ROUTING,
     ReactiveFormsModule,
     FormsModule,
+    APP_ROUTING,
     CommonModule,
     HttpClientModule,
     NgxPaginationModule,
@@ -61,7 +66,8 @@ import { AuthService } from './services/auth.service';
   providers: [
     SeccionesService,
     ExamenService,
-    AuthService
+    AuthService,
+    PreguntasService
   ],
   bootstrap: [AppComponent]
 })
