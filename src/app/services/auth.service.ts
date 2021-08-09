@@ -7,6 +7,7 @@ import { Resp } from '../models/resp.interface';
 import { AngularFireAuth } from '@angular/fire/auth';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Administrador } from '../models/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class AuthService {
     idUsuario:string = '';
     email:string = '';
     password:string = '';
+    admin: Administrador = new Administrador;
     //Crear usuario nuevo
     //https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
 
@@ -125,7 +127,9 @@ export class AuthService {
   }
 
   esAdmin() : boolean{
-    const passwordAdmin = 'utt2021';
+    const passwordAdmin = this.admin.password;
+    //console.log(passwordAdmin);
+    
     //const email = this.email
     //let emailAdmin = 'admin@gmail.com'
     if(passwordAdmin == this.password){
