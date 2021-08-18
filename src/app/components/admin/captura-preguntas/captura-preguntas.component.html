@@ -84,6 +84,13 @@
                 Este campo es requerido
             </div>
         </div>
+
+        <div class="alert-danger" *ngIf="verificarRespuestas() == false">
+            <div class="container-error-message">
+                Por favor verifique que la respuesta correcta coincida con alguna de las respuestas anteriores
+            </div>
+        </div>
+
         <div class="d-grid gap-2 col-6 mx-auto">
             <button class="btn btn-success me-md-2" type="submit" [disabled]="!crearPregunta.valid">Registrar Pregunta</button>
             <button class="btn btn-warning" type="button" (click)="limpiar()">Limpiar</button>

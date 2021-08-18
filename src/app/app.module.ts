@@ -8,6 +8,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { environment } from '../environments/environment';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 //Rutas
 import { APP_ROUTING } from "./app.routes";
@@ -15,6 +16,8 @@ import { APP_ROUTING } from "./app.routes";
 //Servicios
 import { SeccionesService } from './services/secciones.service';
 import { ExamenService } from './services/examen.service';
+import { AuthService } from './services/auth.service';
+import { PreguntasService } from './services/preguntas.service';
 
 // Componentes 
 import { AppComponent } from './app.component';
@@ -25,12 +28,9 @@ import { SeccionesComponent } from './components/secciones/secciones.component';
 import { SeccionComponent } from './components/seccion/seccion.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { SeccionTarjetaComponent } from './components/seccion-tarjeta/seccion-tarjeta.component';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { AuthService } from './services/auth.service';
 import { CapturaPreguntasComponent } from './components/admin/captura-preguntas/captura-preguntas.component';
-import { PreguntasService } from './services/preguntas.service';
 import { ResultadosComponent } from './components/admin/resultados/resultados.component';
 
 

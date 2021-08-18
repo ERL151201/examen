@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { merge, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Pregunta } from '../models/pregunta.interface';
 import { Respuesta } from '../models/respuesta.interface';
@@ -35,6 +35,8 @@ export class ExamenService {
   
   public correctasExam: any = [];
   public respUser: any = [];
+  //public termino: boolean = false;
+  //public seccion: string = '';
 
   public getPreguntasMate(){
     return this.preguntas = this.preguntasCollectionMate.snapshotChanges()
@@ -97,7 +99,7 @@ export class ExamenService {
   }
 
   calificaExamen(user: any, exam:any){
-    let respuestasUser:any = []    
+    let respuestasUser:any = [];
     this.getCorrectas(exam);
     //console.log(this.correctasExam);
     this.afs.collection('respuestas').doc(exam).collection(user).get()
@@ -173,6 +175,8 @@ export class ExamenService {
         console.log('Algo salio mal :(');
         break;
     }
+    //this.termino = true;
+    //this.seccion = exam;
   }
 
   calificacionFinal(user: string, id_user:string){
