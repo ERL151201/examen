@@ -11,9 +11,7 @@ import { Observable } from 'rxjs';
 export class NavbarComponent implements OnInit {
 
 
-  constructor(private router:Router, public auth: AuthService) {
-
-   }
+  constructor(private router:Router, public auth: AuthService) { }
   ngOnInit(): void {}
 
   buscarSeccion(termino:string){
