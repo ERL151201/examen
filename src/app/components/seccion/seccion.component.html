@@ -1,9 +1,9 @@
 <div class="d-flex">
-    <h1 class="animated fadeIn">{{seccion.nombre | uppercase}}</h1>
+    <h1 class="animated fadeInLeft">{{seccion.nombre | uppercase}}</h1>
     <button type="button" class="btn btn-warning ml-auto" (click)="calif()">Terminar Sección</button>
 </div>
 <hr>
-<div class="row animated fadeIn fast">
+<div class="row animated fadeInLeft">
     <form [formGroup]="enviarRespuestas" (ngSubmit)="enviarPregunta(enviarRespuestas.value)">
         <div class="form-group" *ngFor="let pregunta of preguntas  | paginate: { itemsPerPage: 1, currentPage: p }">
             <div class="id">

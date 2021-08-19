@@ -52,6 +52,19 @@ export class CapturaPreguntasComponent implements OnInit {
     this.image = e.target.files[0];
   }
 
+  verificarRespuestas(){
+    let resp1 = this.crearPregunta.get('respuesta1');
+    let resp2 = this.crearPregunta.get('respuesta2');
+    let resp3 = this.crearPregunta.get('respuesta3');
+    let resp4 = this.crearPregunta.get('respuesta4');
+    let correcta = this.crearPregunta.get('correcta');
+    if(correcta?.value == resp1?.value || correcta?.value == resp2?.value || correcta?.value == resp3?.value || correcta?.value == resp4?.value){
+      return true
+    }else{
+      return false
+    }
+  }
+
   resultados(){
     this.router.navigate(['/admin/resultados']);
   }

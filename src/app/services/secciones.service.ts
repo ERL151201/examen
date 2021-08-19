@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
+import { ExamenService } from './examen.service';
 
 @Injectable()
 export class SeccionesService {
+
+    //public id: number = 5;
     
     private secciones:Seccion[] = [
         {
@@ -30,7 +33,7 @@ export class SeccionesService {
         },
     ];
 
-    constructor() {
+    constructor(public eS:ExamenService) {
         console.log("Servicio listo para usar");
         
     }
@@ -59,6 +62,29 @@ export class SeccionesService {
         return seccionesArr;
 
     }
+
+    /*terminoSeccion(){
+        if (this.eS.termino == true) {
+            switch (this.eS.seccion) {
+                case 'pensamientoMate':
+                    this.id = 0;
+                break;
+                case 'pensamientoAnalitico':
+                    this.id = 1;
+                break;
+                case 'lenguaje':
+                    this.id = 2;
+                break;
+                case 'comprensionLectura':
+                    this.id = 3;
+                break;
+                default:
+                    break;
+            }
+            return true
+        }
+        return false
+    }*/
     
 }
 

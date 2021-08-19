@@ -1,5 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
+import { timer, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { SeccionesService } from "../../services/secciones.service";
 import { ExamenService } from 'src/app/services/examen.service';
@@ -7,6 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Respuesta } from '../../models/respuesta.interface';
 import { AuthService } from 'src/app/services/auth.service';
+import { TimerService } from '../../services/timer.service';
 
 @Component({
   selector: 'app-seccion',
@@ -19,14 +21,16 @@ export class SeccionComponent {
   preguntas:any=[];
   p:number=1;
   exam:string = '';
-  user:string = ''
+  user:string = '';
+
   @ViewChild('id_pregunta') id_pregunta: any;
 
   constructor( private activatedRoute: ActivatedRoute,
                 private _seccionesService: SeccionesService,
                 public eS: ExamenService,
                 private router:Router,
-                public auth: AuthService     
+                public auth: AuthService  ,
+                public timer: TimerService   
     ) {
       this.enviarRespuestas = this.createFormGroup();
     }
@@ -102,6 +106,7 @@ export class SeccionComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.showLoading();
+        this.timer.pauseTimer();
         this.eS.calificaExamen(this.user, this.exam);
         this.router.navigate(['/secciones']);
       } else if (result.isDenied) {
@@ -109,4 +114,7 @@ export class SeccionComponent {
       }
     })
   }
+  
+  
+  
 }

@@ -1,9 +1,9 @@
-<div class="d-flex">
+<div class="d-flex animated fadeInLeft">
     <h1>Secciones <small>a responder del examen</small></h1>
     <button type="button" class="btn btn-danger ml-auto" (click)="terminar()">Terminar Examen</button>
 </div>
 <hr>
-<div class="card-group animated fadeIn">
+<div class="card-group animated fadeInLeft">
     <div class=" animated fadeIn fast" *ngFor="let seccion of secciones; let i = index">
         <div class="card h-100 m-2 text-center">
             <img [src]="seccion.img" class="img-logo mx-auto" [alt]="seccion.nombre">

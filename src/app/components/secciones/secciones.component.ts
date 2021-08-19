@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ExamenService } from '../../services/examen.service';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
+import { TimerService } from '../../services/timer.service';
 
 @Component({
   selector: 'app-secciones',
@@ -19,7 +20,8 @@ export class SeccionesComponent implements OnInit {
   constructor(private _seccionesService: SeccionesService,
               private router:Router,  
               private eS: ExamenService,
-              private auth: AuthService
+              private auth: AuthService,
+              private timer: TimerService
     ) {  }
 
   ngOnInit() {
@@ -29,7 +31,9 @@ export class SeccionesComponent implements OnInit {
   }
 
   verSeccion(idx:number){
+      this.timer.pauseTimer();
       this.router.navigate(['/seccion',idx]);
+      this.timer.startTimer();
   }
 
   terminar(){
