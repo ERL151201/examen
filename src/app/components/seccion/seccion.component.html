@@ -12,7 +12,7 @@
             <div class="d-flex justify-content-between">
                 <div class="pregunta">
                     <h5>Pregunta {{pregunta.id_pregunta}}</h5>
-                    <p>{{pregunta.pregunta_txt}}</p>
+                    <p class="text-break fs-6">{{pregunta.pregunta_txt}}</p>
                     <div class="form-group">
                         <label>
                             <input type="radio" value={{pregunta.respuesta1}} name="correcta" formControlName="correcta">  {{pregunta.respuesta1}}

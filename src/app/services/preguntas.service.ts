@@ -110,44 +110,6 @@ export class PreguntasService {
       ).subscribe();
   }
 
-
-  //login y logout de usuario
-
-  /*async login(email:string, password:string){
-    Swal.showLoading();
-    try{
-      const resultado = await this.afAuth.signInWithEmailAndPassword(email, password);
-      Swal.close();
-      return resultado;
-    }
-    catch (error){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: error,
-      })
-    }
-  }
-  
-  async logout(){
-    Swal.showLoading();
-    try{
-      await this.afAuth.signOut();
-      Swal.close();
-    }
-    catch (error){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: error,
-      })
-    }
-  }
-
-  /*getCurrentUser(){
-    return this.afAuth.authState.pipe(first()).toPromise();
-  }*/
-
   preguntaGuardada(){
     Swal.fire({
       position: 'center',
@@ -163,8 +125,6 @@ export class PreguntasService {
       .pipe(map(changes => {
         return changes.map(action => {
           const data = action.payload.doc.data() as Calificacion;
-          //console.log(data);
-          
           return data;
         });
       }));

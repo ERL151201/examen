@@ -13,7 +13,7 @@ export class TimerService {
   interval2: any;
   horas: any;
   minutos: any;
-  segundos: any;
+  //segundos: any;
 
   constructor(public router: Router) {  }
 
@@ -21,7 +21,6 @@ export class TimerService {
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
         this.timeLeft--;
-        
         //this.segundos = (Math.round(this.timeLeft % 0x3C)).toString();
         this.horas    = (Math.floor(this.timeLeft / 0xE10)).toString();
         this.minutos  = (Math.floor(this.timeLeft / 0x3C ) % 0x3C).toString();
@@ -33,13 +32,15 @@ export class TimerService {
     },1000);
     this.interval2 = setInterval(()=>{
         Swal.fire({
-          text: 'Tiempo Restante: '+this.horas+'h:'+this.minutos+'m',
+          title: 'Tiempo Restante: '+this.horas+'h:'+this.minutos+'m',
+          footer: 'Este recordatorio aparecera cada minuto',
+          timer: 5000,
+          timerProgressBar: true,
           toast: true,
           position: 'bottom-end',
-          width: 250,
           showConfirmButton: false,
         })
-      }, 10000)
+      }, 60000)
   }
 
   pauseTimer() {
