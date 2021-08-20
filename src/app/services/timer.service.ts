@@ -8,7 +8,9 @@ import Swal from 'sweetalert2';
 })
 export class TimerService {
 
-  timeLeft: number = 600;//Duracion del examen (Modificar en segundos)
+  timeLeft: number = 600;//Duracion del examen (Modificar en segundos) 
+  //60 = 1 minuto, 600 = 10 minutos, 3600 = 1 hora(60 minutos)   
+  
   interval: any;
   interval2: any;
   horas: any;
