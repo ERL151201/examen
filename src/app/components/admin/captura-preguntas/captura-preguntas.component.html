@@ -9,10 +9,10 @@
             <label for="id_examen">Selecciona el Módulo de examen</label>
             <select class="form-control" id="id_examen" formControlName="id_examen">
                     <option value="">---</option>
-                    <option value="1">Pensamiento Matemático</option>
-                    <option value="2">Pensamiento Analítico</option>
-                    <option value="3">Estructura del Lenguaje</option>
-                    <option value="4">Comprensión Lectora</option>
+                    <option value="1">Ciencias Básicas Aplicadas</option>
+                    <option value="2">Formación Tecnológica</option>
+                    <option value="3">Lenguas y Métodos</option>
+                    <option value="4">Habilidades Gerenciales</option>
                 </select>
         </div>
         <div class="alert-danger" *ngIf="id_examen?.invalid && (id_examen?.dirty || id_examen?.touched)">

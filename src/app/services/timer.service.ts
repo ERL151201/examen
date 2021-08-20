@@ -34,7 +34,7 @@ export class TimerService {
         Swal.fire({
           title: 'Tiempo Restante: '+this.horas+'h:'+this.minutos+'m',
           footer: 'Este recordatorio aparecera cada minuto',
-          timer: 5000,
+          timer: 10000,
           timerProgressBar: true,
           toast: true,
           position: 'bottom-end',

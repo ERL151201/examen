@@ -8,25 +8,25 @@ export class SeccionesService {
     
     private secciones:Seccion[] = [
         {
-          nombre: "Pensamiento Matematico",
+          nombre: "Ciencias Básicas Aplicadas",
           des: "Resolveras distintos problemas matematicos en base a tus conocimientos",
           img: "assets/img/mat.png",
           idx: 0,
         },
         {
-            nombre: "Pensamiento Analítico",
+            nombre: "Formación Tecnológica",
             des: "Resolveras distintos problemas analiticos en base a tus conocimientos",
             img: "assets/img/analitico.png",
             idx: 1,
         },
         {
-            nombre: "Estructura del lenguaje",
+            nombre: "Lenguas y Métodos",
             des: "Escribiras la correcta escritura de las palabras, sus funciones y concordancia",
             img: "assets/img/lengua.jpg",
             idx: 2
         },
         {
-            nombre: "Comprensión lectora",
+            nombre: "Habilidades Gerenciales",
             des: "Identificaras las ideas relevantes de un texto",
             img: "assets/img/lect.jpg",
             idx: 3

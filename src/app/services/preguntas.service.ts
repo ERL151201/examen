@@ -57,20 +57,20 @@ export class PreguntasService {
     var descCorrec = '';
     switch(newPregunta.id_examen){
         case "1":
-            descExam = 'pensamientoMate';
-            descCorrec = 'correctasMate';
+            descExam = 'cienciasBasicasAplicadas';
+            //descCorrec = 'correctasMate';
             break;
         case "2":
-            descExam = 'pensamientoAnalitico';
-            descCorrec = 'correctasAnalitico';
+            descExam = 'formacionTecnologica';
+            //descCorrec = 'correctasAnalitico';
             break;
         case "3":
-            descExam = 'lenguaje';
-            descCorrec = 'correctasLenguaje';
+            descExam = 'lenguasMetodos';
+            //descCorrec = 'lenguasMetodos';
             break;
         case "4":
-            descExam = 'comprensionLectura';
-            descCorrec = 'correctasLectura';
+            descExam = 'habilidadesGerenciales';
+            //descCorrec = 'correctasLectura';
             break;
         default:
             descExam = '';
