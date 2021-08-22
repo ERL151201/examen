@@ -41,25 +41,25 @@ export class SeccionComponent {
       case "0":
           this.eS.getPreguntasMate().subscribe(preguntas => {
             this.preguntas = preguntas;
-            this.exam = 'pensamientoMate'
+            this.exam = 'cienciasBasicasAplicadas'
           });
         break;
       case "1":
           this.eS.getPreguntasAnalitico().subscribe(preguntas => {
             this.preguntas = preguntas;
-            this.exam = 'pensamientoAnalitico'
+            this.exam = 'formacionTecnologica'
           });
         break;
       case "2":
           this.eS.getPreguntasLenguaje().subscribe(preguntas => {
             this.preguntas = preguntas;
-            this.exam = 'lenguaje'
+            this.exam = 'lenguasMetodos'
           });
         break;
       case "3":
           this.eS.getPreguntasComprension().subscribe(preguntas => {
             this.preguntas = preguntas;
-            this.exam = 'comprensionLectura'
+            this.exam = 'habilidadesGerenciales'
           });
         break;
       default:

@@ -12,10 +12,10 @@ import { Calificacion } from '../models/calificacion.interface';
 export class ExamenService {
 
   constructor(private afs: AngularFirestore) {
-    this.preguntasCollectionMate = this.afs.collection<Pregunta>('preguntas').doc('pensamientoMate').collection('preguntas');
-    this.preguntasCollectionAnalit = this.afs.collection<Pregunta>('preguntas').doc('pensamientoAnalitico').collection('preguntas');
-    this.preguntasCollectionLenguaje = this.afs.collection<Pregunta>('preguntas').doc('lenguaje').collection('preguntas');
-    this.preguntasCollectionComprension = this.afs.collection<Pregunta>('preguntas').doc('comprensionLectura').collection('preguntas');
+    this.preguntasCollectionMate = this.afs.collection<Pregunta>('preguntas').doc('cienciasBasicasAplicadas').collection('preguntas');
+    this.preguntasCollectionAnalit = this.afs.collection<Pregunta>('preguntas').doc('formacionTecnologica').collection('preguntas');
+    this.preguntasCollectionLenguaje = this.afs.collection<Pregunta>('preguntas').doc('lenguasMetodos').collection('preguntas');
+    this.preguntasCollectionComprension = this.afs.collection<Pregunta>('preguntas').doc('habilidadesGerenciales').collection('preguntas');
     
     this.respuestas = afs.collection('respuestas');
 
@@ -112,7 +112,8 @@ export class ExamenService {
     });
     let iguales=0;
     let total:number = this.correctasExam.length;
-    let calificacion;
+    let preCalif: number;
+    let calificacion: number;
     for(var i=0;i<this.correctasExam.length; i++){
       for(var j=0;j<this.respUser.length;j++){
     		if(this.correctasExam[i]==this.respUser[j]){
@@ -121,9 +122,10 @@ export class ExamenService {
       }
     }
     let incorrectas = total-iguales;
-    calificacion = iguales/total*10
+    preCalif = iguales/total*10
+    calificacion = parseFloat(preCalif.toFixed(2));
     switch (exam) {
-      case "pensamientoMate":
+      case "cienciasBasicasAplicadas":
         let califSeccion1 = {
             seccionExamen: exam,
             respuestasIncorrectas: incorrectas,
@@ -135,7 +137,7 @@ export class ExamenService {
           seccion1: califSeccion1
         }, { merge: true })
         break;
-      case "pensamientoAnalitico":
+      case "formacionTecnologica":
         let califSeccion2 = {
           seccionExamen: exam,
           respuestasIncorrectas: incorrectas,
@@ -147,7 +149,7 @@ export class ExamenService {
           seccion2: califSeccion2
         }, { merge: true })
         break;
-      case "lenguaje":
+      case "lenguasMetodos":
         let califSeccion3 = {
           seccionExamen: exam,
           respuestasIncorrectas: incorrectas,
@@ -159,7 +161,7 @@ export class ExamenService {
           seccion3: califSeccion3
         }, { merge: true })
         break;
-      case "comprensionLectura":
+      case "habilidadesGerenciales":
         let califSeccion4 = {
           seccionExamen: exam,
           respuestasIncorrectas: incorrectas,
@@ -180,6 +182,8 @@ export class ExamenService {
   }
 
   calificacionFinal(user: string, id_user:string){
+    let preCaliFinal;
+    let calificacionFinal;
     this.afs.collection('calificaciones').doc(user).get()
     .subscribe(doc => {
       let datos = doc.data() as Calificacion
@@ -188,8 +192,8 @@ export class ExamenService {
       let calif3 = datos.seccion3.calificacionSeccion;
       let calif4 = datos.seccion4.calificacionSeccion;
       
-      let calificacionFinal = (calif1+calif2+calif3+calif4)/4
-      console.log(calificacionFinal);
+      preCaliFinal = (calif1+calif2+calif3+calif4)/4;
+      calificacionFinal = parseFloat(preCaliFinal.toFixed(2))
       this.afs.collection('calificaciones').doc(user).set({
         calificacionFinal: calificacionFinal,
         id_usuario: id_user
