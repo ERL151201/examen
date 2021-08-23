@@ -26,7 +26,6 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { SeccionesComponent } from './components/secciones/secciones.component';
 import { SeccionComponent } from './components/seccion/seccion.component';
-import { BuscadorComponent } from './components/buscador/buscador.component';
 import { SeccionTarjetaComponent } from './components/seccion-tarjeta/seccion-tarjeta.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
@@ -42,7 +41,6 @@ import { ResultadosComponent } from './components/admin/resultados/resultados.co
     AboutComponent,
     SeccionesComponent,
     SeccionComponent,
-    BuscadorComponent,
     SeccionTarjetaComponent,
     LoginComponent,
     RegistroComponent,

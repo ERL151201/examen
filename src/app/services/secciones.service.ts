@@ -9,26 +9,26 @@ export class SeccionesService {
     private secciones:Seccion[] = [
         {
           nombre: "Ciencias Básicas Aplicadas",
-          des: "Resolveras distintos problemas matematicos en base a tus conocimientos",
-          img: "assets/img/mat.png",
+          des: "Utilizaras el conocimiento científico de una o varias ramas de la ciencia para resolver problemas prácticos.",
+          img: "assets/img/ciencias-aplicadas.png",
           idx: 0,
         },
         {
             nombre: "Formación Tecnológica",
-            des: "Resolveras distintos problemas analiticos en base a tus conocimientos",
-            img: "assets/img/analitico.png",
+            des: "Pondras a prueba tus competencias de apropiación y aplicación de conocimientos tendientes a la transformación, innovación, implementación y operación de objetos tecnológicos",
+            img: "assets/img/formacion.jpg",
             idx: 1,
         },
         {
             nombre: "Lenguas y Métodos",
-            des: "Escribiras la correcta escritura de las palabras, sus funciones y concordancia",
-            img: "assets/img/lengua.jpg",
+            des: "Deberas reconocer y diferenciar los métodos de la lengua",
+            img: "assets/img/lenguamet.jpg",
             idx: 2
         },
         {
             nombre: "Habilidades Gerenciales",
-            des: "Identificaras las ideas relevantes de un texto",
-            img: "assets/img/lect.jpg",
+            des: "Identificaras las habilidades que un individuo posee para llevar a cabo tareas de liderazgo en una empresa de manera eficaz.",
+            img: "assets/img/habilidades-gerenciales.png",
             idx: 3
         },
     ];
@@ -62,29 +62,6 @@ export class SeccionesService {
         return seccionesArr;
 
     }
-
-    /*terminoSeccion(){
-        if (this.eS.termino == true) {
-            switch (this.eS.seccion) {
-                case 'pensamientoMate':
-                    this.id = 0;
-                break;
-                case 'pensamientoAnalitico':
-                    this.id = 1;
-                break;
-                case 'lenguaje':
-                    this.id = 2;
-                break;
-                case 'comprensionLectura':
-                    this.id = 3;
-                break;
-                default:
-                    break;
-            }
-            return true
-        }
-        return false
-    }*/
     
 }
 

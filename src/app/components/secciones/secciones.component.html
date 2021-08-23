@@ -6,7 +6,7 @@
 <div class="card-group animated fadeInLeft">
     <div class=" animated fadeIn fast" *ngFor="let seccion of secciones; let i = index">
         <div class="card h-100 m-2 text-center">
-            <img [src]="seccion.img" class="img-logo mx-auto" [alt]="seccion.nombre">
+            <img [src]="seccion.img" class="img-logo mx-auto" style="margin-top: 10px;" [alt]="seccion.nombre">
             <div class="card-body" style="width:15rem">
                 <h5 class="card-title">{{seccion.nombre}}</h5>
                 <p class="card-text">{{ seccion.des }}</p>
